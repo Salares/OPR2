@@ -1,0 +1,10 @@
+package ukol2;
+
+public enum Filters {
+    TALLER_THAN, SHORTER_THAN,
+    GENDER,
+    POSITION,
+    HEAVIER_THAN, LIGHTER_THAN,
+    SKILL_LEVEL_HIGHER_THAN, SKILL_LEVEL_LOWER_THAN
+
+}

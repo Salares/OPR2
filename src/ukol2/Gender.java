@@ -1,5 +1,7 @@
 package ukol2;
 
-public enum Gender {
+public enum Gender{
     MALE, FEMALE
+
+
 }

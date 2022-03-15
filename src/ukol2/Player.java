@@ -28,6 +28,23 @@ public class Player {
         this.credit = credit;
     }
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", nick='" + nick + '\'' +
+                ", oneCharIcon=" + oneCharIcon +
+                ", email='" + email + '\'' +
+                ", gender=" + gender +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", position=" + position +
+                ", skillLevel=" + skillLevel +
+                ", credit=" + credit +
+                '}';
+    }
+
     public String getName() {
         return name;
     }
