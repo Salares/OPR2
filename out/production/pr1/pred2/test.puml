@@ -1,0 +1,22 @@
+@startuml
+!pragma teoz true
+database Reservations as dbR order 2
+database Partners as dbP order 1
+participant Item order 4
+participant User order 3
+
+group Construction
+    User -> dbR: Submit Reservation
+    dbR --> User: Assign ID
+    User -> Item: Builds
+    User -> Item: Take photo
+    group Coupon_conditions
+    User -> dbR: Submit Photo, GPS
+    dbR --> User: Confirm Photo, GPS
+    User -> dbP: Pick Partner
+    dbP -> User: Sends Coupon
+    end Coupon_conditions
+    User -> dbP: Uses Coupon
+    dbP --> User: Disable Coupon
+end Construction
+@enduml

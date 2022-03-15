@@ -1,0 +1,20 @@
+@startuml
+autonumber
+actor User
+participant Controller as con #0fc
+database Database as db
+
+
+User -> con : "Get all match results"
+con -> db : getResults()
+db --> con : return List<Result>
+User -> con : "Get result detail"
+con -> db : getDetail(Result)
+db --> con : return String
+
+
+
+@enduml
+
+'User::View -> All match results
+'User::View -> Match Details

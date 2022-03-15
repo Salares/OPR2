@@ -1,0 +1,94 @@
+@startuml
+skinparam shadowing false
+skinparam linetype ortho
+left to right direction
+
+class Person << abstract >>{
+    +<<get>> name : String
+    +<<get>> {static} id : Integer
+    +<<get>> email : String[]
+    +<<get>> telephone : String[]
+    +<<get>> address : Address
+    + .ctor([params])
+}
+class Address {
+    +<<get/set>> city : String
+    +<<get/set>> state : String
+    +<<get/set>> street : String
+    +<<get/set>> bin : Integer
+    +.ctor([params])
+}
+class Book {
+    +<<get>> name : String
+    +<<get>> author : Author
+    +<<get>> publisher : Publisher
+    +<<get>> isbn : String
+    +<<get/set>> isLent : Boolean
+    +.ctor([params])
+}
+class Customer extends Person{
+    +<<get>> loans : Loan[]
+    +<<get>> penalties : Penalty[]
+    +.ctor([params])
+    -void addLoan(Book)
+    +void startLoan(Book)
+    +void checkLoans()
+    +void returnBook()
+}
+
+class Author extends Person {
+    +<<get>> books : Book[]
+    +<<get>> publisher : Publisher
+    +.ctor([params])
+    + void addBook(Book)
+}
+
+
+class Loan {
+    +<<get>> loanLimit : Integer
+    +<<get>> book : Book
+    +<<get>> customer : Customer
+    +<<get>> lentDate : java.time.LocalDate
+    +<<get>> limitDate : java.time.LocalDate
+    +<<get/set>> finished : Boolean
+    +.ctor([params] \ limitDate)
+
+
+}
+
+class Publisher {
+    +<<get>> {static} id : Integer
+    +<<get>> name : String
+    +<<get>> books : Book[]
+    +.ctor([params])
+}
+
+class Penalty {
+    +<<get>> book : Book
+    +<<get>> delay : long
+    +.ctor([params])
+}
+
+Person . Address
+
+Book .. Publisher
+
+Customer .. Loan
+Customer .. Penalty
+<> diamond
+Customer -left-> diamond : checkLoans()\t
+diamond --o Penalty : new Penalty()\n
+Customer --> Loan : \nreturnBook()
+Customer -----> Book: returnBook()
+
+Book <-- Loan : \tstartLoan() <<Sets isLent to True>>
+Customer <-- Loan : startLoan()\n<<Adds Loan to loans>>
+Loan <- Loan : startLoan() <<Sets limitDate according to loanLimit>>
+
+Author. Book
+Author --> Publisher : add\nBook()
+Author .. Publisher
+
+Penalty .. Book
+
+@enduml

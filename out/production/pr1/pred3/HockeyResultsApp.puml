@@ -1,0 +1,73 @@
+@startuml
+skinparam shadowing false
+
+class Controller {
+    +<<get>> match : Match
+    --
+    + getMatchResults() : Result[]
+    + getMatchDetailByID(id) : Result
+}
+
+class Match {
+    +<<get>> {static} id : Integer
+    +<<get>> teams : Team[]
+    +<<get>> referees : Referee[]
+    +<<get>> matchStart : Date
+    ..
+    +<<get/set>> endResult : Result
+    +<<get/set>> matchLength
+    --
+    + .cons([params])
+    + getWinner() : Team
+    + getTeamResult(Team team) :
+}
+
+class Result {
+    +<<get/set>> homeTeamScore : Integer
+    +<<get/set>> awayTeamScore : Integer
+}
+
+class Team {
+    +<<get>> {static} id : Integer
+    +<<get>> name : String
+    ..
+    +<<get/set>> players : Player[]
+    --
+    + .cons([params])
+}
+
+abstract class Person {
+    +<<get>> {static} id : Integer
+    +<<get>> name : String
+    +<<get>> surname : String
+    +<<get>> dateOfBirth : java.time.LocalDate
+    --
+    - .cons([params])
+}
+
+abstract class HockeyParticipant {
+    +<<get/set>> salary : Integer
+    +<<get/set>> dressNumber : Integer
+    --
+    - .cons([params])
+
+}
+
+class Player extends Person, HockeyParticipant {
+    +<<get/set>> position : String
+    --
+    + .cons([params])
+}
+
+class Referee extends Person, HockeyParticipant {
+    --
+    + .cons([params])
+
+}
+
+Team "m     " *-- "n " Match : " composition"
+Referee "m   " *-right- "n     " Match : "composition"
+Result "1" -up-o "1 " Match : " aggregation"
+Controller "1" -up-o "1 " Match : " aggregation"
+Player "n " --o "1   " Team : " aggregation"
+@enduml
