@@ -6,13 +6,13 @@ public class FilteringManager {
     public Player[] applyFilter(Player[] players, Filters filter, String arg) {
         ArrayList<Player> temp = new ArrayList<>();
         ArrayList<Player> retAL = new ArrayList<>();
+
         for (Player player : players) {
             temp.add(player);
         }
         String pattern;
         String trimmedArg;
         int filterArg;
-
 
         for (Player player : temp) {
             switch(filter) {
@@ -34,7 +34,6 @@ public class FilteringManager {
                         retAL.add(player);
                     }
                     break;
-
 
                 case GENDER:
                     pattern = "(\\d)(\\s)";
@@ -60,8 +59,6 @@ public class FilteringManager {
                             throw new IllegalArgumentException("Illegal Filter Argument");
                     }
                     break;
-
-
 
                 case POSITION:
                     pattern = "(\\d)(\\s)";
@@ -105,8 +102,6 @@ public class FilteringManager {
                     }
                     break;
 
-
-
                 case HEAVIER_THAN:
                     pattern = "(\\D)(\\s)";
                     trimmedArg = arg.replaceAll(pattern, arg);
@@ -116,8 +111,6 @@ public class FilteringManager {
                         retAL.add(player);
                     }
                     break;
-
-
 
                 case LIGHTER_THAN:
                     pattern = "(\\D)(\\s)";
@@ -150,7 +143,6 @@ public class FilteringManager {
                     break;
                 default:
                     throw new IllegalArgumentException("Filter not implemented");
-
             }
         }
 
