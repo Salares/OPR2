@@ -30,19 +30,17 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", nick='" + nick + '\'' +
-                ", oneCharIcon=" + oneCharIcon +
-                ", email='" + email + '\'' +
-                ", gender=" + gender +
-                ", height=" + height +
-                ", weight=" + weight +
-                ", position=" + position +
-                ", skillLevel=" + skillLevel +
-                ", credit=" + credit +
-                '}';
+        return "Player:\n" +
+                " Name: " + name + " " + surname + '\n' +
+                " Nickname: " + nick + "\n" +
+                " Icon:   " + oneCharIcon + '\n' +
+                " Email:  " + email + '\n' +
+                " Gender: " + gender + '\n' +
+                " Height: " + height + "\n" +
+                " Weight: " + weight + '\n' +
+                " Position: " + position + '\n' +
+                " Skill Level: " + skillLevel + '\n' +
+                " Credit: " + credit;
     }
 
     public String getName() {

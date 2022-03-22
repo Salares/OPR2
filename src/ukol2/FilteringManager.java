@@ -68,33 +68,27 @@ public class FilteringManager {
                     switch(trimmedArg) {
                         case "attacker":
                         case "a":
-                            if(player.getPosition() == PlayerPosition.ATTACKER) {
-                                retAL.add(player);
-                            }
+                            if(player.getPosition() == PlayerPosition.ATTACKER) retAL.add(player);
                             break;
+
                         case "defender":
                         case "d":
-                            if(player.getPosition() == PlayerPosition.DEFENDER) {
-                                retAL.add(player);
-                            }
+                            if(player.getPosition() == PlayerPosition.DEFENDER) retAL.add(player);
                             break;
+
                         case "middle":
                         case "m":
-                            if(player.getPosition() == PlayerPosition.MIDDLE) {
-                                retAL.add(player);
-                            }
+                            if(player.getPosition() == PlayerPosition.MIDDLE) retAL.add(player);
                             break;
+
                         case "sweeper":
                         case "sw":
-                            if(player.getPosition() == PlayerPosition.SWEEPER) {
-                                retAL.add(player);
-                            }
+                            if(player.getPosition() == PlayerPosition.SWEEPER) retAL.add(player);
                             break;
+
                         case "support":
                         case "su":
-                            if(player.getPosition() == PlayerPosition.SUPPORT) {
-                                retAL.add(player);
-                            }
+                            if(player.getPosition() == PlayerPosition.SUPPORT) retAL.add(player);
                             break;
 
                         default:
@@ -107,9 +101,7 @@ public class FilteringManager {
                     trimmedArg = arg.replaceAll(pattern, arg);
                     filterArg = Integer.parseInt(trimmedArg);
 
-                    if(player.getWeight() > filterArg) {
-                        retAL.add(player);
-                    }
+                    if(player.getWeight() > filterArg) retAL.add(player);
                     break;
 
                 case LIGHTER_THAN:
@@ -117,9 +109,7 @@ public class FilteringManager {
                     trimmedArg = arg.replaceAll(pattern, arg);
                     filterArg = Integer.parseInt(trimmedArg);
 
-                    if(player.getWeight() < filterArg) {
-                        retAL.add(player);
-                    }
+                    if(player.getWeight() < filterArg) retAL.add(player);
                     break;
 
                 case SKILL_LEVEL_HIGHER_THAN:
@@ -127,9 +117,7 @@ public class FilteringManager {
                     trimmedArg = arg.replaceAll(pattern, arg);
                     filterArg = Integer.parseInt(trimmedArg);
 
-                    if(player.getSkillLevel() > filterArg) {
-                        retAL.add(player);
-                    }
+                    if(player.getSkillLevel() > filterArg) retAL.add(player);
                     break;
 
                 case SKILL_LEVEL_LOWER_THAN:
@@ -137,10 +125,9 @@ public class FilteringManager {
                     trimmedArg = arg.replaceAll(pattern, arg);
                     filterArg = Integer.parseInt(trimmedArg);
 
-                    if(player.getSkillLevel() < filterArg) {
-                        retAL.add(player);
-                    }
+                    if(player.getSkillLevel() < filterArg) retAL.add(player);
                     break;
+
                 default:
                     throw new IllegalArgumentException("Filter not implemented");
             }
